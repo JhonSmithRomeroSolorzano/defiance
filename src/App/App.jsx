@@ -1,59 +1,116 @@
 import React from 'react';
-import { Router, Route, Link } from 'react-router-dom';
-
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import cx from 'classnames';
 import { history } from '../_helpers';
 import { authenticationService } from '../_services';
 import { PrivateRoute } from '../_components';
+import { Content, HeaderMenuButton } from 'carbon-components-react';
+import { Header, HeaderContainer, HeaderName } from 'carbon-components-react';
+import { HeaderGlobalBar, HeaderGlobalAction } from 'carbon-components-react';
+import { SideNav, SideNavItems } from 'carbon-components-react';
+import { Dashboard16, VolumeUpFilled16, User24 } from '@carbon/icons-react';
+import { SkipToContent, SideNavLink } from 'carbon-components-react';
+import CampaignDetailComponent from '../Campaigns/CampaignDetail';
+import EtfComponent from '../ETF/ETF';
 import { HomePage } from '../HomePage';
-import { OauthPage } from '../OauthPage';
-import { Button } from 'carbon-components-react';
+import { OauthPage } from '../OauthPage/OauthPage'
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            currentUser: null
-        };
-    }
+function App (props) {
 
-    componentDidMount() {
-        authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
-    }
-
-    logout() {
+    const logout = () => {
         authenticationService.logout();
         history.push('/login');
     }
 
-    render() {
-        const { currentUser } = this.state;
-        return (
-            <Router history={history}>
-                <div>
-                    {currentUser &&
-                        <nav className="navbar navbar-expand navbar-dark bg-dark">
-                            <div className="navbar-nav">
-                                <Link to="/" className="nav-item nav-link">Home</Link>
-                                <Button onClick={this.logout}>Logout</Button>
-                            </div>
-                        </nav>
-                    }
-                    <div className="jumbotron">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-6 offset-md-3">
-                                    <PrivateRoute exact path="/" component={HomePage} />
-                                    {/* <Route path="/login" component={LoginPage} /> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <Route path="/oauth2.html" component={OauthPage} />
-            </Router>
+    const StoryContent = ({ useResponsiveOffset = true }) => {
+        const classNameFirstColumn = cx({
+          'bx--col-lg-13': true,
+          'bx--offset-lg-3': useResponsiveOffset,
+        });
+
+        const content = (
+          <div className="bx--grid" style={{'width': '100%', 'padding': '0rem', 'margin': '0rem'}}>
+            <div className="bx--row" style={{'width': '100%', 'padding': '0rem', 'margin': '0rem'}}>
+              <div className={classNameFirstColumn} style={{'width': '100%'}}>
+              <Router>
+                <Switch>
+                  <Route path='/' exact component={EtfComponent}/>  
+                  <Route path='/campaigns' exact component={CampaignDetailComponent}></Route>
+                  
+                </Switch>
+              </Router>
+              </div>
+            </div>
+          </div>
         );
+        const style = {
+          height: '100%',
+        };
+        if (useResponsiveOffset) {
+          style.margin = '0';
+          style.width = '100%';
+        }
+        style.padding = '3rem 0rem 2rem 0rem'
+        return (
+          <Content id="main-content" style={style}>
+            {content}            
+          </Content>
+        );
+      };
+    
+    if(localStorage.email){
+        return (
+            <>
+            <HeaderContainer
+            render={({ isSideNavExpanded, onClickSideNavExpand }) => (
+                <Header aria-label="IBM Platform Name">
+                <SkipToContent />
+                <HeaderMenuButton
+                    aria-label="Open menu"
+                    onClick={onClickSideNavExpand}
+                    isActive={isSideNavExpanded}
+                />
+                <HeaderName prefix="">
+                    Defiance Analytics
+                </HeaderName>
+                <HeaderGlobalBar>
+                    <HeaderGlobalAction
+                    aria-label="Notifications"
+                    >
+                    <User24 />
+                    </HeaderGlobalAction>
+                </HeaderGlobalBar>
+                <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
+                    <SideNavItems>
+                        <SideNavLink renderIcon={Dashboard16} href="/">
+                        ETFs
+                        </SideNavLink>
+                        <SideNavLink renderIcon={VolumeUpFilled16} href="/campaigns">
+                        Campaigns
+                        </SideNavLink>
+                        <SideNavLink renderIcon={VolumeUpFilled16} onClick={logout}>
+                        Logout
+                        </SideNavLink>
+                    </SideNavItems>
+                    </SideNav>
+                </Header>
+            )}
+            />
+            <StoryContent>
+                
+            </StoryContent>
+    
+        </>
+        );
+    }else{
+        return <Router>
+            <PrivateRoute exact path="/" component={HomePage} />
+            <Route path="/oauth2.html" component={OauthPage} />
+            </Router>
     }
+    
+
 }
 
 export { App }; 
