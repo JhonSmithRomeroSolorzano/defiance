@@ -25,14 +25,14 @@ function App (props) {
 
     const StoryContent = ({ useResponsiveOffset = true }) => {
         const classNameFirstColumn = cx({
-          'bx--col-lg-13': true,
+          'bx--col': true,
           'bx--offset-lg-3': useResponsiveOffset,
         });
 
         const content = (
-          <div className="bx--grid" style={{'width': '100%', 'padding': '0rem', 'margin': '0rem'}}>
-            <div className="bx--row" style={{'width': '100%', 'padding': '0rem', 'margin': '0rem'}}>
-              <div className={classNameFirstColumn} style={{'width': '100%'}}>
+          <div className="bx--grid--full-width">
+            <div className="bx--row" style={{'margin': '0'}}>
+              <div className={classNameFirstColumn} style={{padding: '0rem'}}>
               <Router>
                 <Switch>
                   <Route path='/' exact component={EtfComponent}/>  
@@ -51,7 +51,7 @@ function App (props) {
           style.margin = '0';
           style.width = '100%';
         }
-        style.padding = '3rem 0rem 2rem 0rem'
+        style.padding = '3rem 0rem 0rem 0rem'
         return (
           <Content id="main-content" style={style}>
             {content}            
