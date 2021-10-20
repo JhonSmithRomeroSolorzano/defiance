@@ -26,18 +26,16 @@ function ETF () {
   var selectEtf = (EtfName)=>{
     let impresionSeries = [];
     let costSeries = [];
-    let reportSerie = series || [].filter( record=>{
+    let reportSerie = series ? series.filter( record=>{
       return record.campaign_name === "monty-earnings-SPAK-"+EtfName+"-campaign"
-    })
+    }) : []
+
     reportSerie.forEach( record =>{
-      impresionSeries.push([record.date_est, record.impressions])
-      costSeries.push([record.date_est, record.cost])
+      impresionSeries.push([new Date(record.date_est).toLocaleDateString("en-US"), record.impressions])
+      costSeries.push([new Date(record.date_est).toLocaleDateString("en-US"), record.cost])
     })
     
-    let etfObject = {}
-    etfObject[EtfName] = [impresionSeries, costSeries]
-
-    return etfObject
+    return  [impresionSeries, costSeries]
   }
   
   var EtfsList = (props)=>{

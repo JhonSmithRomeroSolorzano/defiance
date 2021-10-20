@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@carbon/charts": "^0.50.8",
     "@carbon/charts-react": "0.50.5",
     "@carbon/colors": "^10.33.0",
     "@carbon/grid": "10.17.0",
