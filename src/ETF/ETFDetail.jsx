@@ -6,7 +6,7 @@ import "./ETFDetail.css";
 
 function ETFDetail (props) {
 
-  var options = {
+  var chartOptions = {
     "toolbar": {
       "enabled": false
     },
@@ -39,8 +39,8 @@ function ETFDetail (props) {
       obj['group'] = "Impresions";
       obj['key'] = record[0];
       obj['value'] = record[1];
-      return obj
     }
+    return obj
   }));
   const [costsSeries, setCostsSeries] = useState(props.serie[1].map( record => {
     let obj = {}
@@ -48,8 +48,9 @@ function ETFDetail (props) {
       obj['group'] = "Cost";
       obj['key'] = record[0];
       obj['value'] = record[1];
-      return obj
+      
     }
+    return obj
   }));
 
   return (
@@ -68,7 +69,7 @@ function ETFDetail (props) {
       <div className='bx--col-sm-2 bx--col-md-6 bx--col-lg-8'>
       <LineChart
           data={[...impresionsSeries, ...costsSeries]}
-			    options={options}>
+			    options={chartOptions}>
 		    </LineChart>
       </div>
     </div>

@@ -11,9 +11,11 @@ import { SideNav, SideNavItems } from 'carbon-components-react';
 import { Dashboard16, VolumeUpFilled16, User24 } from '@carbon/icons-react';
 import { SkipToContent, SideNavLink } from 'carbon-components-react';
 import CampaignDetailComponent from '../Campaigns/CampaignDetail';
+import CampaignControlDetailComponent from '../Campaigns/CampaignControlDetail';
 import EtfComponent from '../ETF/ETF';
 import { HomePage } from '../HomePage';
 import { OauthPage } from '../OauthPage/OauthPage'
+import { Login } from '../Login/Login';
 
 
 function App (props) {
@@ -36,8 +38,8 @@ function App (props) {
               <Router>
                 <Switch>
                   <Route path='/' exact component={EtfComponent}/>  
-                  <Route path='/campaigns' exact component={CampaignDetailComponent}></Route>
-                  
+                  <Route path='/campaigns' exact component={CampaignDetailComponent}></Route>                  
+                  <Route path='/campaignscontroldetail' exact component={CampaignControlDetailComponent}></Route>                  
                 </Switch>
               </Router>
               </div>
@@ -86,8 +88,11 @@ function App (props) {
                         <SideNavLink renderIcon={Dashboard16} href="/">
                         ETFs
                         </SideNavLink>
-                        <SideNavLink renderIcon={VolumeUpFilled16} href="/campaigns">
+                        <SideNavLink renderIcon={Dashboard16} href="/campaigns">
                         Campaigns
+                        </SideNavLink>
+                        <SideNavLink renderIcon={Dashboard16} href="/campaignscontroldetail">
+                        Campaign Control Detail
                         </SideNavLink>
                         <SideNavLink renderIcon={VolumeUpFilled16} onClick={logout}>
                         Logout
@@ -104,10 +109,13 @@ function App (props) {
         </>
         );
     }else{
-        return <Router>
-            <PrivateRoute exact path="/" component={HomePage} />
-            <Route path="/oauth2.html" component={OauthPage} />
+         return <Router>
+             <PrivateRoute exact path="/" component={HomePage} />
+             <Route path="/oauth2.html" component={OauthPage} />
             </Router>
+        // return <Router>
+        //          <Route path="/" component={Login} />
+        //        </Router>
     }
     
 

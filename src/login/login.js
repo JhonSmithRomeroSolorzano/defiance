@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'carbon-components-react';
 import { TextInput } from 'carbon-components-react';
-import { Auth } from 'aws-amplify';
 
-class Login extends React.Component {
+
+function Login() {
+
+  useEffect(
+    () => {
+      if(document.getElementsByClassName('bx--modal-close') && document.getElementsByClassName('bx--modal-close')[0]) document.getElementsByClassName('bx--modal-close')[0].remove()
+    },
+    []
+  );
   
-  constructor(){
-    super();
-    this.state={
-      user: '',
-      pass: ''
-    }
-    this.submit = this.submit.bind(this)
-  }
 
-  submit(){
+  /*var submit = ()=>{
 
     console.log('User: '+ this.state.user)
     console.log('Pass: '+ this.state.pass)
@@ -27,39 +26,38 @@ class Login extends React.Component {
       }
     }
     signIn.call(this);
-  }
-  render() {
-    return (
-      <div>
-        <Modal
-          open
-          modalHeading="Login"
-          //modalLabel="Login"
-          primaryButtonText="Login"
-          secondaryButtonText="Cancel"
-          onRequestSubmit = {this.submit}
-          >
-          <TextInput
-            data-modal-primary-focus
-            id="text-input-1"
-            labelText="Username"
-            //placeholder="e-mail"
-            style={{ marginBottom: '1rem' }}
-            onChange={(e)=> this.setState({user: e.target.value})}
-          />
-          <TextInput
-            data-modal-primary-focus
-            id="text-input-1"
-            labelText="Password"
-            placeholder=""
-            style={{ marginBottom: '1rem' }}
-            onChange={(e)=> this.setState({pass: e.target.value})}
-          />
+  }*/
+
+  return (
+    <div>
+      <Modal
+        open
+        modalHeading="Defiance Analitycs"
+        //modalLabel="Login"
+        primaryButtonText="Login"
+        secondaryButtonText="Cancel"
+        //onRequestSubmit = {this.submit}
+        >
+        <TextInput
+          data-modal-primary-focus
+          id="user"
+          labelText="Username"
+          //placeholder="e-mail"
+          style={{ marginBottom: '1rem' }}
+          //onChange={(e)=> this.setState({user: e.target.value})}
+        />
+        <TextInput.PasswordInput
+          data-modal-primary-focus
+          id="password"
+          labelText="Password"
+          placeholder=""
+          style={{ marginBottom: '1rem' }}
+          //onChange={(e)=> this.setState({pass: e.target.value})}
+        />
       </Modal>
-          
+     
     </div>
-    )
-  }
+  )
 }
 
-export default Login;
+export  {Login};

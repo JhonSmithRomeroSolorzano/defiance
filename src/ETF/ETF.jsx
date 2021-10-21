@@ -19,8 +19,6 @@ function ETF () {
       }
 
     });
-    
-
   }, []);
 
   var selectEtf = (EtfName)=>{
@@ -52,7 +50,7 @@ function ETF () {
     <>  
       <HeaderComponent text="ETFs"></HeaderComponent>
       <div className='bx--row' style={{margin: '0', background:warmGray[20], padding: '0.5rem 0rem'}}>
-        <div className='bx--offset-lg-8 bx--col-lg-3 bx--offset-md-6 bx--col-md-2 bx--offset-sm-0 bx--col-sm-4'>
+        <div className='bx--offset-lg-9 bx--col-lg-3 bx--offset-md-6 bx--col-md-2 bx--offset-sm-0 bx--col-sm-4' style={{paddingRight: '2rem', paddingLeft: '2rem'}}>
           <MultiSelect
               id='input1'
               label= 'Choose an option'
