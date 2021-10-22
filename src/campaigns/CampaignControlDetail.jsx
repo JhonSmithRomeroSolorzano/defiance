@@ -81,7 +81,7 @@ function CampaignControlDetail (props) {
         "scaleType": "time"
 
       },
-      "left": {
+      "right": {
         "mapsTo": "value",
         "scaleType": "linear"
       }
@@ -100,19 +100,19 @@ function CampaignControlDetail (props) {
     <>  
       <HeaderComponent text="AAPL - FIVG - News - Text"></HeaderComponent>
       <div className='bx--row' style={{margin: '0', background:warmGray[20]}}>
-        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4">
+        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4" style={{padding: '0'}}>
           <div style={{background: 'white', margin: '1rem', padding: '0.5rem'}}>
             <FormLabel style={{'padding': '0rem', 'margin': '0rem'}}>Start Date</FormLabel>
             <h3 style={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap'}}>Oct 2 2021</h3>
           </div>
         </div>
-        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4">
+        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4" style={{padding: '0'}}>
           <div style={{background: 'white', margin: '1rem', padding: '0.5rem'}}>
             <FormLabel style={{'padding': '0rem', 'margin': '0rem'}}>End Date</FormLabel>
             <h3 style={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap'}}>Ongoing</h3>
           </div>
         </div>
-        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4">
+        <div className="bx--col-lg-3 bx--col-md-3 bx--col-sm-4" style={{padding: '0'}}>
           <div style={{background: 'white', margin: '1rem', padding: '0.5rem'}}>
             <FormLabel style={{'padding': '0rem', 'margin': '0rem'}}>End Date</FormLabel>
             <h3 style={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap'}}>Ongoing</h3>

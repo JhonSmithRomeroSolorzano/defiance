@@ -5,7 +5,7 @@ function HeaderComponent(props) {
   return (
     <div className='bx--row' style={{margin: '0', background: black}}>
       <div className='bx--col-max'>
-        <h1 style={{color: warmGray[10]}}>{props.text}</h1>
+        <h1 style={{color: warmGray[10], padding:'1.5rem 0'}}>{props.text}</h1>
       </div>
     </div>
   )

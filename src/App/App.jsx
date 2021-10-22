@@ -10,8 +10,8 @@ import { HeaderGlobalBar, HeaderGlobalAction } from 'carbon-components-react';
 import { SideNav, SideNavItems } from 'carbon-components-react';
 import { Dashboard16, VolumeUpFilled16, User24 } from '@carbon/icons-react';
 import { SkipToContent, SideNavLink } from 'carbon-components-react';
-import CampaignDetailComponent from '../campaigns/campaignDetail';
-import CampaignControlDetailComponent from '../campaigns/CampaignControlDetail';
+import CampaignDetailComponent from '../Campaigns/CampaignDetail';
+import CampaignControlDetailComponent from '../Campaigns/CampaignControlDetail';
 import EtfComponent from '../ETF/ETF';
 import { HomePage } from '../HomePage';
 import { OauthPage } from '../OauthPage/OauthPage'
