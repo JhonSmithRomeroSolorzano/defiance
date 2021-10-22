@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import 'carbon-components/scss/globals/scss/styles.scss';
