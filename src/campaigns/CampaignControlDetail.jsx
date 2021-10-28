@@ -4,7 +4,7 @@ import { warmGray } from '@carbon/colors';
 import { LineChart } from "@carbon/charts-react";
 import "@carbon/charts/styles.css";
 import { campaignsService } from '../_services/campaigns.service';
-import HeaderComponent from '../LayoutComponents/HeaderComponent';
+import HeaderComponent from '../layoutComponents/HeaderComponent';
 
 
 function CampaignControlDetail (props) {

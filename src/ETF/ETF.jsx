@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeaderComponent from '../LayoutComponents/HeaderComponent';
+import HeaderComponent from '../layoutComponents/HeaderComponent';
 import {etfsService} from '../_services/etfs.service';
 import ETFDetail from './ETFDetail';
 import { MultiSelect  } from 'carbon-components-react';
